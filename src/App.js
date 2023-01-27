@@ -1,23 +1,79 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import { AboutUsPage } from "./components/aboutUsPage/AboutUsPage";
+import Basket from "./components/basket/Basket";
+import Modal from "./components/common/modal/Modal";
+import Contacts from "./components/contacts/Contacts";
+import { data } from "./components/data/data";
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
+import Main from "./components/main/main";
+import OurMenuPage from "./components/ourMenuPage/OurMenuPage";
 
 function App() {
+  const [db, setDb] = useState(data[0].oftenOrderCards);
+  const [emptyBasketData, setEmptyBasketData] = useState([]);
+
+  const totalPrice = emptyBasketData.reduce(
+    (prevVal, curVal) => prevVal + curVal.total * curVal.price,
+    0
+  );
+  const totalCount = emptyBasketData.reduce(
+    (prevVal, curVal) => prevVal + curVal.total * curVal.count,
+    0
+  );
+
+  const onAddData = (item) => {
+    const existData = emptyBasketData.find((el) => el.id === item.id);
+    if (existData) {
+      const newData = emptyBasketData.map((el) =>
+        el.id === item.id ? { ...existData, total: existData.total + 1 } : el
+      );
+      setEmptyBasketData(newData);
+    } else {
+      const newData = [...emptyBasketData, { ...item, total: 1 }];
+      setEmptyBasketData(newData);
+    }
+  };
+
+  const onClearCardData = () => {
+    setEmptyBasketData([]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class="wrapper">
+      <Header totalPrice={totalPrice} totalCount={totalCount} />
+      <Routes>
+        <Route
+          path="/"
+          element={<Main onAddData={onAddData} db={db} setDb={setDb} />}
+        />
+        <Route path="/menu" element={<OurMenuPage />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route
+          path="/basket"
+          element={
+            <Basket
+              onClearCardData={onClearCardData}
+              onAddData={onAddData}
+              totalPrice={totalPrice}
+              totalCount={totalCount}
+              emptyBasketData={emptyBasketData}
+            />
+          }
+        />
+        <Route path="/modal" element={<Modal />} />
+        <Route path="/aboutUs" element={<AboutUsPage />} />
+      </Routes>
+
+      {/*  */}
+
+      {/* */}
+      {/* <EmptyBasket/> */}
+      {/*  */}
+      {/*  */}
+      <Footer />
     </div>
   );
 }
