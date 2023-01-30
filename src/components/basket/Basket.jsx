@@ -8,6 +8,7 @@ const Basket = ({
   totalPrice,
   onAddData,
   onClearCardData,
+  onDeleteData
 }) => {
   return (
     <div className="wrapper">
@@ -93,6 +94,7 @@ const Basket = ({
                 <div className="content__items">
                   {emptyBasketData.map((el) => (
                     <BasketCard
+                      onDeleteData={onDeleteData}
                       onAddData={onAddData}
                       totalCount={totalCount}
                       totalPrice={totalPrice}
@@ -106,11 +108,11 @@ const Basket = ({
                   <div className="cart__bottom-details">
                     <span>
                       {" "}
-                      Всего пицц: <b>3 шт.</b>{" "}
+                      Всего пицц: <b>{totalCount} шт.</b>{" "}
                     </span>
                     <span>
                       {" "}
-                      Сумма заказа: <b>900 сом</b>{" "}
+                      Сумма заказа: <b>{totalPrice} сом</b>{" "}
                     </span>
                   </div>
                   <div className="cart__bottom-buttons">

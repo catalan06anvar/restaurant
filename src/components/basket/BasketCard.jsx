@@ -12,6 +12,7 @@ const BasketCard = ({
   price,
   modalImg,
   onAddData,
+  onDeleteData,
 }) => {
   return (
     <div key={id} className="cart__item">
@@ -27,7 +28,10 @@ const BasketCard = ({
         <p>тонкое тесто, 26 см.</p>
       </div>
       <div className="cart__item-count">
-        <div className="button button--outline button--circle cart__item-count-minus">
+        <div
+          onClick={() => onDeleteData(item)}
+          className="button button--outline button--circle cart__item-count-minus"
+        >
           <CardMinusSvg />
         </div>
         <b>{totalCount}</b>
