@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { AboutUsPage } from "./components/aboutUsPage/AboutUsPage";
 import Basket from "./components/basket/Basket";
 import Modal from "./components/common/modal/Modal";
 import Contacts from "./components/contacts/Contacts";
-import { data } from "./components/data/data";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Main from "./components/main/main";
 import OurMenuPage from "./components/ourMenuPage/OurMenuPage";
+import axios from "axios";
 
 function App() {
-  const [db, setDb] = useState(data[0].oftenOrderCards);
+  const [db, setDb] = useState([]);
   const [emptyBasketData, setEmptyBasketData] = useState([]);
   const [activeModal, setActiveModal] = useState(true);
   const [modalId, setModalId] = useState(null);
@@ -38,9 +38,11 @@ function App() {
         el.id === item.id ? { ...existData, total: existData.total + 1 } : el
       );
       setEmptyBasketData(newData);
+      localStorage.setItem("basket", JSON.stringify(newData));
     } else {
       const newData = [...emptyBasketData, { ...item, total: 1 }];
       setEmptyBasketData(newData);
+      localStorage.setItem("basket", JSON.stringify(newData));
     }
   };
 
@@ -58,12 +60,41 @@ function App() {
   };
 
   // const onRemoveItem = (id) =>{
-  //   setEmptyBasketData(el=>emptyBasketData.filter(el=> el.id !== id))
+  //   const newData = emptyBasketData.filter((el)=>el.id !== id)
+  //   setEmptyBasketData(el=>emptyBasketData.filter(el=> el.id !== id)
+  //   setEmptyBasketData(newData);
+  //   localStorage.setItem('basket', JSON.stringify(newData))
+  //   )
   // }
 
   const onClearCardData = () => {
     setEmptyBasketData([]);
   };
+
+  useEffect(() => {
+    setEmptyBasketData(
+      localStorage.getItem("basket")
+        ? JSON.parse(localStorage.getItem("basket"))
+        : []
+    );
+  }, []);
+
+
+// const fetchData = async() =>{
+//   let resp = await fetch('http://localhost:3000/db.json')
+//   let data = await resp.json();
+//   console.log(data.data);
+//   setDb(data.data[0].oftenOrderCards);
+// }
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/db.json')
+    .then (({data}) => setDb(data.data[0].oftenOrderCards))
+    // fetchData()
+    // fetch("http://localhost:3000/db.json")
+    //   .then((response) => response.json())
+    //   .then((data) => setDb(data.data[0].oftenOrderCards));
+  }, []);
 
   return (
     <div class="wrapper">
