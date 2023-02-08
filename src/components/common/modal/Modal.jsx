@@ -1,12 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Modal.css";
 
 import ModalT from "../../common/image/modal-t.svg";
 import ModalT1 from "../../common/image/modal-t1.svg";
 import ModalT2 from "../../common/image/modal-t2.svg";
 import ModalT3 from "../../common/image/modal-t3.svg";
+import cn from "classnames";
 
-const Modal = ({ activeModal, setActiveModal, modalId, onAddData }) => {
+const Modal = ({
+  activeModal,
+  setActiveModal,
+  modalId,
+  onAddData,
+  type,
+  size,
+  taste
+}) => {
+  const availabeTypes = ["тонкое", "традиционное"];
+  const availableSizes = ["20", "30", "40"];
+  const [activeTypes, setActiveTypes] = useState(0);
+  const [activeSizes, setActiveSizes] = useState(0);
+  const availableTastes = [
+    {
+      id: 1,
+      img: ModalT,
+      name: 'С горчицой',
+    },
+    {
+      id: 2,
+      img: ModalT1,
+      name: 'С морепродуктами',
+    },
+    {
+      id: 3,
+      img: ModalT2,
+      name: 'Больше сыра',
+    },
+    {
+      id: 4,
+      img: ModalT3,
+      name: 'С халапеньо',
+    },
+  ]
+  
+
+  const selectedSize = (index) => {
+    setActiveSizes(index);
+    console.log(index);
+  };
+
+  const selectedType = (index) => {
+    setActiveTypes(index);
+    console.log(index);
+  };
+
+  const selectedTaste = (index) =>{
+    setActiveTastes(index)
+    console.log(index);
+  }
+
+
+  
+  const [activeTastes, setActiveTastes] = useState (0);
+  
+
   const onAdd = () => {
     const addedData = {
       id: modalId.id,
@@ -14,6 +71,9 @@ const Modal = ({ activeModal, setActiveModal, modalId, onAddData }) => {
       modalImg: modalId.modalImg,
       price: modalId.price,
       count: modalId.count,
+      type: availabeTypes[activeTypes],
+      size: availableSizes[availableSizes],
+      taste: availableTastes[activeTastes],
     };
     onAddData(addedData);
     console.log(addedData);
@@ -32,42 +92,51 @@ const Modal = ({ activeModal, setActiveModal, modalId, onAddData }) => {
               <h3 className="pizza-block__title">{modalId && modalId.name}</h3>
               <div className="pizza-block__selector">
                 <ul>
-                  <li className="active">тонкое</li>
-                  <li>традиционное</li>
+                  {availabeTypes.map((type, index) => (
+                    <li
+                      key={type.id}
+                      onClick={() => selectedType(index)}
+                      className={cn({
+                        active: activeTypes === index,
+                      })}
+                    >
+                      {type}
+                    </li>
+                  ))}
                 </ul>
+
                 <ul>
-                  <li className="active">26 см.</li>
-                  <li>30 см.</li>
-                  <li>40 см.</li>
+                  {availableSizes.map((size, index) => (
+                    <li
+                      key={size.id}
+                      onClick={() => selectedSize(index)}
+                      className={cn({
+                        active: activeSizes === index,
+                      })}
+                    >
+                      {size} см
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
             <p className="add-type-text">Добавьте по вкусу</p>
             <div className="modal-choose-type d-flex">
-              <div>
-                <div>
-                  <img src={ModalT} alt="" />
-                </div>
-                <p>Ветчина из цыпленка</p>
-              </div>
-              <div>
-                <div>
-                  <img src={ModalT1} alt="" />
-                </div>
-                <p>Ветчина из цыпленка</p>
-              </div>
-              <div>
-                <div>
-                  <img src={ModalT2} alt="" />
-                </div>
-                <p>Ветчина из цыпленка</p>
-              </div>
-              <div>
-                <div>
-                  <img src={ModalT3} alt="" />
-                </div>
-                <p>Ветчина из цыпленка</p>
-              </div>
+
+              {
+                availableTastes.map((taste,index)=>(
+                  <div key={taste.id} onClick={() => selectedTaste(index)}>
+                  <div>
+                    <img src={taste.img} alt='' />
+                  </div>
+                  <p>{taste.name}</p>
+                  </div>
+                ))
+              }
+              
+                
+              
+             
             </div>
           </div>
         </div>

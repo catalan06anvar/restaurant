@@ -3,6 +3,10 @@ import { CardMinus, CardMinusSvg } from "../common/svg/CardMinusSvg.jsx";
 import { CardPlus, CardPlusSvg } from "../common/svg/CardPlusSvg";
 
 const BasketCard = ({
+  onRemoveItem,
+  taste,
+  size,
+  type,
   totalPrice,
   totalCount,
   el,
@@ -25,7 +29,7 @@ const BasketCard = ({
       </div>
       <div className="cart__item-info">
         <h3>{name}</h3>
-        <p>тонкое тесто, 26 см.</p>
+        <p>{type} тесто, {size} см. {taste.name}</p>
       </div>
       <div className="cart__item-count">
         <div
@@ -34,7 +38,7 @@ const BasketCard = ({
         >
           <CardMinusSvg />
         </div>
-        <b>{totalCount}</b>
+        <b>{item.total}</b>
         <div
           onClick={() => onAddData(item)}
           className="button button--outline button--circle cart__item-count-plus"
@@ -43,10 +47,10 @@ const BasketCard = ({
         </div>
       </div>
       <div className="cart__item-price">
-        <b>{item.price * totalCount}сом</b>
+        <b>{item.total * price}сом</b>
       </div>
       <div className="cart__item-remove">
-        <div className="button button--outline button--circle">
+        <div onClick={() => onRemoveItem(item.id)}className="button button--outline button--circle">
           <ButtonCircleSvg />
         </div>
       </div>

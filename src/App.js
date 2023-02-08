@@ -14,6 +14,13 @@ import OurMenuPage from "./components/ourMenuPage/OurMenuPage";
 function App() {
   const [db, setDb] = useState(data[0].oftenOrderCards);
   const [emptyBasketData, setEmptyBasketData] = useState([]);
+  const [activeModal, setActiveModal] = useState(true);
+  const [modalId, setModalId] = useState(null);
+
+  const onModalClick = (index) => {
+    setActiveModal(false);
+    setModalId(index);
+  };
 
   const totalPrice = emptyBasketData.reduce(
     (prevVal, curVal) => prevVal + curVal.total * curVal.price,
@@ -37,21 +44,22 @@ function App() {
     }
   };
 
-  const onDeleteData = (item) =>{
-    const existData = emptyBasketData.find(el => el.id === item.id)
-    if(existData.total===1){
-      const newData = emptyBasketData.filter(el => el.id !== item.id)
-      setEmptyBasketData(newData)
-    }else{
-      const newData = emptyBasketData.map(el=>
-        el.id === item.id ? {...existData, total: existData.total - 1} : el,
-        );
+  const onDeleteData = (item) => {
+    const existData = emptyBasketData.find((el) => el.id === item.id);
+    if (existData.total === 1) {
+      const newData = emptyBasketData.filter((el) => el.id !== item.id);
       setEmptyBasketData(newData);
-
+    } else {
+      const newData = emptyBasketData.map((el) =>
+        el.id === item.id ? { ...existData, total: existData.total - 1 } : el
+      );
+      setEmptyBasketData(newData);
     }
   };
 
-  
+  // const onRemoveItem = (id) =>{
+  //   setEmptyBasketData(el=>emptyBasketData.filter(el=> el.id !== id))
+  // }
 
   const onClearCardData = () => {
     setEmptyBasketData([]);
@@ -63,14 +71,40 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main onAddData={onAddData} db={db} setDb={setDb} />}
+          element={
+            <Main
+              onModalClick={onModalClick}
+              modalId={modalId}
+              setModalId={setModalId}
+              setActiveModal={setActiveModal}
+              activeModal={activeModal}
+              onAddData={onAddData}
+              db={db}
+              setDb={setDb}
+            />
+          }
         />
-        <Route path="/menu" element={<OurMenuPage />} />
+        <Route
+          path="/menu"
+          element={
+            <OurMenuPage
+              db={db}
+              setDb={setDb}
+              onModalClick={onModalClick}
+              modalId={modalId}
+              setModalId={setModalId}
+              setActiveModal={setActiveModal}
+              activeModal={activeModal}
+              onAddData={onAddData}
+            />
+          }
+        />
         <Route path="/contacts" element={<Contacts />} />
         <Route
           path="/basket"
           element={
             <Basket
+              // onRemoveItem={onRemoveItem}
               onDeleteData={onDeleteData}
               onClearCardData={onClearCardData}
               onAddData={onAddData}
