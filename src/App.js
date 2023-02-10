@@ -13,9 +13,11 @@ import axios from "axios";
 
 function App() {
   const [db, setDb] = useState([]);
+  const [sliderData, setSliderData] = useState([]);
   const [emptyBasketData, setEmptyBasketData] = useState([]);
   const [activeModal, setActiveModal] = useState(true);
   const [modalId, setModalId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const onModalClick = (index) => {
     setActiveModal(false);
@@ -68,6 +70,8 @@ function App() {
   // }
 
   const onClearCardData = () => {
+    const newData = localStorage.clear();
+    setEmptyBasketData(newData);
     setEmptyBasketData([]);
   };
 
@@ -79,22 +83,36 @@ function App() {
     );
   }, []);
 
-
-// const fetchData = async() =>{
-//   let resp = await fetch('http://localhost:3000/db.json')
-//   let data = await resp.json();
-//   console.log(data.data);
-//   setDb(data.data[0].oftenOrderCards);
-// }
+  // const fetchData = async() =>{
+  //   let resp = await fetch('http://localhost:3000/db.json')
+  //   let data = await resp.json();
+  //   console.log(data.data);
+  //   setDb(data.data[0].oftenOrderCards);
+  // }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/db.json')
-    .then (({data}) => setDb(data.data[0].oftenOrderCards))
-    // fetchData()
-    // fetch("http://localhost:3000/db.json")
-    //   .then((response) => response.json())
-    //   .then((data) => setDb(data.data[0].oftenOrderCards));
-  }, []);
+    axios
+      .get("http://localhost:3000/db.json")
+      .then(({ data }) => {
+       setDb(data.data[0].oftenOrderCards);
+       
+       setIsLoading(false); 
+      }
+      
+  )}, []);
+
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/db.json")
+      .then(({ data }) => {
+      setSliderData(data.data[1].sliderCardData)
+      
+      }
+      
+  )}, []);
+
+
 
   return (
     <div class="wrapper">
@@ -104,6 +122,9 @@ function App() {
           path="/"
           element={
             <Main
+            sliderData={sliderData}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
               onModalClick={onModalClick}
               modalId={modalId}
               setModalId={setModalId}

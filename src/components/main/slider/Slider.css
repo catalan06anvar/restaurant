@@ -1,0 +1,14 @@
+.slick-prev:before {
+    content: url('../../common/image/slider-left.svg');
+}
+.slick-next:before {
+    content: url('../../common/image/slider0right.svg');
+}
+.slick-prev{
+    left: -73px;
+    top: 47%;
+}
+.slick-next {
+    right: -53px;
+    top: 47%;
+}
