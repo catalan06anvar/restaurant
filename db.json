@@ -1,0 +1,203 @@
+{
+    "data":  [
+        {
+          "oftenOrderCards": [
+            {
+              "id": 0,
+              "name": "Бургер-пицца",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 580,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 1,
+              "rating": "3"
+            },
+            {
+              "id": 1,
+              "name": "Сырная",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 480,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 2,
+              "rating": "4"
+            },
+            {
+              "id": 2,
+              "name": "Маргарита ",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 600,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 3,
+              "rating": "5"
+            },
+            {
+              "id": 3,
+              "name": "Мексиканская",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 600,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 4,
+              "rating": "5"
+            },
+            {
+              "id": 4,
+              "name": "Пицца из половинок",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 200,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 1,
+              "rating": "1"
+            },
+            {
+              "id": 5,
+              "name": "Тропиканка",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 350,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 3,
+              "rating": "2"
+            },
+            {
+              "id": 6,
+              "name": "Чили",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 600,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 2,
+              "rating": "3"
+            },
+            {
+              "id": 7,
+              "name": "Пепперони",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 550,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1,2],
+              "taste": [0,1,2,3],
+              "category": 0,
+              "rating": "4"
+            },
+            {
+              "id": 8,
+              "name": "Детская",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 400,
+              "count": 1,
+              "type": [0,1],
+              "size": [1,2],
+              "taste": [0,1,2,3],
+              "category": 1,
+              "rating": "1"
+            },
+            {
+              "id": 9,
+              "name": "Турецкая",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 650,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,1],
+              "taste": [0,1,2,3],
+              "category": 2,
+              "rating": "5"
+            },
+            {
+              "id": 10,
+              "name": "Диетическая",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 500,
+              "count": 1,
+              "type": [0,1],
+              "size": [0,2],
+              "taste": [0,1,2,3],
+              "category": 3,
+              "rating": "2"
+            },
+            {
+              "id": 11,
+              "name": "Пицца из фруктов",
+              "modalImg":
+                "https://dodopizza-a.akamaihd.net/static/Img/Products/c940c5751e6d420e997d86c26a8ba16f_292x292.webp",
+              "text": "Соберите свою пиццу 35 см с двумя разными вкусами",
+              "price": 400,
+              "count": 1,
+              "type": [0,1],
+              "size": [1,2],
+              "taste": [0,1,2,3],
+              "category": 4,
+              "rating": "3"
+            }
+          ]
+        },
+        {
+          "sliderCardData": [
+            {
+              "id": 1,
+              "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVnLxvegS6tv-GmI_7Rfa_lJ1mFjhdS1vIRQ&usqp=CAU",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            },
+            {
+              "id": 2,
+      
+              "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVnLxvegS6tv-GmI_7Rfa_lJ1mFjhdS1vIRQ&usqp=CAU",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            },
+            {
+              "id": 3,
+      
+              "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVnLxvegS6tv-GmI_7Rfa_lJ1mFjhdS1vIRQ&usqp=CAU",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            },
+            {
+              "id": 4,
+      
+              "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVnLxvegS6tv-GmI_7Rfa_lJ1mFjhdS1vIRQ&usqp=CAU",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+          ]
+        }
+      ]
+}
